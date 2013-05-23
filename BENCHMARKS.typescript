@@ -1,0 +1,253 @@
+Script started on Wed 22 May 2013 03:02:36 PM PDT
+dev1$ ulimit -u
+1024
+dev1$ ulimit -u 8192
+dev1$ time mvn exec:java -Dexec.args="--execution-strategy synchronous --work-queue-strategy synchronous --core-pool-size 8 --requests-per-second 100 --quiet"
+
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building concurrency-utils
+[INFO]    task-segment: [exec:java]
+[INFO] ------------------------------------------------------------------------
+[INFO] Preparing exec:java
+[INFO] No goals needed for project - skipping
+[INFO] [exec:java {execution: default-cli}]
+Configuration:
+  Execution Strategy: SYNCHRONOUS
+  Work Queue Strategy: SYNCHRONOUS
+  Work Queue Capacity: 100
+  Core Pool Size: 8
+  Maximum Pool Size: 2147483647
+  Keep Alive Time (Seconds): 600
+  Requests Per Second: 100
+  Run Time (Seconds): 60
+  Compute Steps: 10
+  Thread Stack Size (bytes): 1048576
+JVM:
+  Available Processors: 4
+  Free Memory: 54158464
+  Max Memory: 924647424
+  Total Memory: 78512128
+Finished processing in 117494 msec
+Thread Pool Statistics:
+  Active Count: 0
+  Completed Task Count: 6000
+  Core Pool Size: 8
+  Largest Pool Size: 4239
+  Maximum Pool Size: 2147483647
+  Pool Size: 4239
+  Task Count: 6000
+  Rejected Tasks: 0
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2 minutes 
+[INFO] Finished at: Wed May 22 15:05:37 PDT 2013
+[INFO] Final Memory: 13M/103M
+[INFO] ------------------------------------------------------------------------
+
+real	2m1.710s
+user	0m9.712s
+sys	0m37.937s
+dev1$ time mvn exec:java -Dexec.args="--execution-strategy continuation --work-queue-strategy synchronous --core-pool-size 8 --requests-per-second 100 --quiet"
+
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building concurrency-utils
+[INFO]    task-segment: [exec:java]
+[INFO] ------------------------------------------------------------------------
+[INFO] Preparing exec:java
+[INFO] No goals needed for project - skipping
+[INFO] [exec:java {execution: default-cli}]
+Configuration:
+  Execution Strategy: CONTINUATION
+  Work Queue Strategy: SYNCHRONOUS
+  Work Queue Capacity: 100
+  Core Pool Size: 8
+  Maximum Pool Size: 2147483647
+  Keep Alive Time (Seconds): 600
+  Requests Per Second: 100
+  Run Time (Seconds): 60
+  Compute Steps: 10
+  Thread Stack Size (bytes): 1048576
+JVM:
+  Available Processors: 4
+  Free Memory: 54092928
+  Max Memory: 924647424
+  Total Memory: 78512128
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Finished processing in 113275 msec
+Thread Pool Statistics:
+  Active Count: 0
+  Completed Task Count: 66000
+  Core Pool Size: 8
+  Largest Pool Size: 154
+  Maximum Pool Size: 2147483647
+  Pool Size: 154
+  Task Count: 66000
+  Rejected Tasks: 0
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1 minute 55 seconds
+[INFO] Finished at: Wed May 22 15:08:00 PDT 2013
+[INFO] Final Memory: 10M/72M
+[INFO] ------------------------------------------------------------------------
+
+real	1m56.427s
+user	0m12.712s
+sys	0m35.384s
+dev1$ time mvn exec:java -Dexec.args="--execution-strategy continuation --work-queue-strategy bounded --work-queue-capacity 5900 --core-pool-size 8 --maximum-pool-size 100 --requests-per-second 100 --quiet"
+
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building concurrency-utils
+[INFO]    task-segment: [exec:java]
+[INFO] ------------------------------------------------------------------------
+[INFO] Preparing exec:java
+[INFO] No goals needed for project - skipping
+[INFO] [exec:java {execution: default-cli}]
+Configuration:
+  Execution Strategy: CONTINUATION
+  Work Queue Strategy: BOUNDED
+  Work Queue Capacity: 5900
+  Core Pool Size: 8
+  Maximum Pool Size: 100
+  Keep Alive Time (Seconds): 600
+  Requests Per Second: 100
+  Run Time (Seconds): 60
+  Compute Steps: 10
+  Thread Stack Size (bytes): 1048576
+JVM:
+  Available Processors: 4
+  Free Memory: 56237080
+  Max Memory: 924647424
+  Total Memory: 81133568
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Finished processing in 113503 msec
+Thread Pool Statistics:
+  Active Count: 0
+  Completed Task Count: 66000
+  Core Pool Size: 8
+  Largest Pool Size: 8
+  Maximum Pool Size: 100
+  Pool Size: 8
+  Task Count: 66000
+  Rejected Tasks: 0
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1 minute 55 seconds
+[INFO] Finished at: Wed May 22 15:12:01 PDT 2013
+[INFO] Final Memory: 9M/54M
+[INFO] ------------------------------------------------------------------------
+
+real	1m56.588s
+user	0m9.872s
+sys	0m16.463s
+dev1$ time mvn exec:java -Dexec.args="--execution-strategy continuation --work-queue-strategy bounded --work-queue-capacity 5992 --core-pool-size 8 --maximum-pool-size 8 --requests-per-second 100 --quiet"
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building concurrency-utils
+[INFO]    task-segment: [exec:java]
+[INFO] ------------------------------------------------------------------------
+[INFO] Preparing exec:java
+[INFO] No goals needed for project - skipping
+[INFO] [exec:java {execution: default-cli}]
+Configuration:
+  Execution Strategy: CONTINUATION
+  Work Queue Strategy: BOUNDED
+  Work Queue Capacity: 5992
+  Core Pool Size: 8
+  Maximum Pool Size: 8
+  Keep Alive Time (Seconds): 600
+  Requests Per Second: 100
+  Run Time (Seconds): 60
+  Compute Steps: 10
+  Thread Stack Size (bytes): 1048576
+JVM:
+  Available Processors: 4
+  Free Memory: 53807712
+  Max Memory: 924647424
+  Total Memory: 78512128
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Finished processing in 112530 msec
+Thread Pool Statistics:
+  Active Count: 0
+  Completed Task Count: 66000
+  Core Pool Size: 8
+  Largest Pool Size: 8
+  Maximum Pool Size: 8
+  Pool Size: 8
+  Task Count: 66000
+  Rejected Tasks: 0
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1 minute 54 seconds
+[INFO] Finished at: Wed May 22 15:18:01 PDT 2013
+[INFO] Final Memory: 9M/67M
+[INFO] ------------------------------------------------------------------------
+
+real	1m55.598s
+user	0m9.770s
+sys	0m15.685s
+dev1$ time mvn exec:java -Dexec.args="--execution-strategy continuation --work-queue-strategy unbounded --core-pool-size 8 --requests-per-second 100 --quiet"
+
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building concurrency-utils
+[INFO]    task-segment: [exec:java]
+[INFO] ------------------------------------------------------------------------
+[INFO] Preparing exec:java
+[INFO] No goals needed for project - skipping
+[INFO] [exec:java {execution: default-cli}]
+Configuration:
+  Execution Strategy: CONTINUATION
+  Work Queue Strategy: UNBOUNDED
+  Work Queue Capacity: 100
+  Core Pool Size: 8
+  Maximum Pool Size: 600
+  Keep Alive Time (Seconds): 600
+  Requests Per Second: 100
+  Run Time (Seconds): 60
+  Compute Steps: 10
+  Thread Stack Size (bytes): 1048576
+JVM:
+  Available Processors: 4
+  Free Memory: 54129792
+  Max Memory: 924647424
+  Total Memory: 78512128
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Finished processing in 113302 msec
+Thread Pool Statistics:
+  Active Count: 0
+  Completed Task Count: 66000
+  Core Pool Size: 8
+  Largest Pool Size: 8
+  Maximum Pool Size: 600
+  Pool Size: 8
+  Task Count: 66000
+  Rejected Tasks: 0
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1 minute 55 seconds
+[INFO] Finished at: Wed May 22 15:23:56 PDT 2013
+[INFO] Final Memory: 10M/69M
+[INFO] ------------------------------------------------------------------------
+
+real	1m56.706s
+user	0m9.083s
+sys	0m13.666s
+dev1$ exit
+
+Script done on Wed 22 May 2013 03:28:49 PM PDT

@@ -1,0 +1,5 @@
+meme/singularsyntax/benchmark/Benchmark.class
+meme/singularsyntax/benchmark/Benchmark$ContinuationDispatch.class
+meme/singularsyntax/benchmark/Benchmark$Task.class
+meme/singularsyntax/concurrency/ContinuableFutureTask.class
+meme/singularsyntax/concurrency/ContinuableFutureTask$CallContext.class
