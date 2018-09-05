@@ -1,6 +1,19 @@
 Concurrency-Utils
 =================
 
+DEPRECATION
+-----------
+
+Concurrency-Utils and its companion project [javaflow-maven-plugin](https://github.com/singularsyntax/javaflow-maven-plugin) are no longer under development,
+owing to the availability of [Quasar](http://docs.paralleluniverse.co/quasar/),
+an excellent library under active development (and commercially supported)
+which provides highly polished APIs for continuations, lightweight threads, and
+Golang-like [CSP](https://en.wikipedia.org/wiki/Communicating_sequential_processes) channels to JVM programming environments.
+
+
+SYNOPSIS
+--------
+
 Concurrency-Utils provides a very lightweight (just two classes) library
 that offers implementations of the `java.util.concurrent` `RunnableFuture` and
 `CompletionService` interfaces which integrate Apache Commons Javaflow
